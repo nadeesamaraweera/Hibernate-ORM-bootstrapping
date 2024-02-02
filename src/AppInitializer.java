@@ -25,4 +25,5 @@ public class AppInitializer {
         session.close();
 
     }
+
 }
