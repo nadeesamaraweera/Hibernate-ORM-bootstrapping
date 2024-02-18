@@ -29,20 +29,25 @@ public class Order {
     private  Customer customer;
 
 
-    @ManyToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY )
-    private List<Item> items = new ArrayList<>();
+//    @ManyToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY )
+//    private List<Item> items = new ArrayList<>();
+
+
+    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private  List<OrderDetail> orderDetails = new ArrayList<>();
+
+    public int getOrderId() {
+        return orderId;
+    }
 
     @Override
     public String toString() {
         return "Order{" +
-                "orderId='" + orderId + '\'' +
+                "orderId=" + orderId +
                 ", description='" + description + '\'' +
-                ", orderDateTime='" + orderDateTime + '\'' +
+                ", orderDateTime=" + orderDateTime +
+                ", customer=" + customer +
                 '}';
-    }
-
-    public int getOrderId() {
-        return orderId;
     }
 
     public void setOrderId(int orderId) {

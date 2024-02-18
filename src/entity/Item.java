@@ -31,6 +31,12 @@ public class Item {
         return id;
     }
 
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
@@ -38,11 +44,8 @@ public class Item {
                 ", name=" + name +
                 ", qty=" + qty +
                 ", unitPrice=" + unitPrice +
+                ", orders=" + orders +
                 '}';
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getName() {
