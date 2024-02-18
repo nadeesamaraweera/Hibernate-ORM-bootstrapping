@@ -67,11 +67,14 @@ public class AppInitializer {
 //        deleteSession.close();
 //        }
 
+          customerRepository = new CustomerRepository();
+          customerRepository.deleteCustomer(customer);
+
 
     }
           private static Customer getCustomer() {
           Customer customer = new Customer();
-          customer.setId(5);
+          customer.setId(1);
           Nameidentifire nameidentifire =  getNameIdentifire();
               MobileNumber homeNo =new MobileNumber();
               homeNo.setType("Home");
