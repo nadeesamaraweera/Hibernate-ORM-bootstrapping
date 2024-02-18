@@ -19,12 +19,23 @@ public class OrderDetail {
     private  double  price;
 
 
+
+
     @ManyToOne
     @JoinColumn(name = "order_id" , referencedColumnName = "order_id" ,
             insertable = false,
             updatable = false
     )
     private  Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "item_id" , referencedColumnName = "item_id" ,
+              insertable = false,
+              updatable = false
+    )
+
+    private  Item item;
+
 
     public int getOrderQty() {
         return orderQty;

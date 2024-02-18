@@ -24,17 +24,14 @@ public class Item {
     private double unitPrice;
 
 
-    @ManyToMany(mappedBy = "items")
-    private List<Order> orders = new ArrayList<>();
+//    @ManyToMany(mappedBy = "items")
+//    private List<Order> orders = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL , fetch =  FetchType.LAZY , mappedBy = "item")
+    private  List<OrderDetail> orderDetails = new ArrayList<>();
 
     public int getId() {
         return id;
-    }
-
-
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Override
@@ -44,8 +41,11 @@ public class Item {
                 ", name=" + name +
                 ", qty=" + qty +
                 ", unitPrice=" + unitPrice +
-                ", orders=" + orders +
                 '}';
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getName() {
