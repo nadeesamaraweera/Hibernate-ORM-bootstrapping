@@ -36,6 +36,10 @@ public class AppInitializer {
 //        Customer existCustomer = getSession.get(Customer.class, 1);
 //        System.out.println("Existing Customer:" + existCustomer.toString());
 //        getSession.close();
+
+        customerRepository = new CustomerRepository();
+        Customer customer = customerRepository.getCustomer(1);
+        System.out.println(customer);
 //
 //
 //        //3.update
