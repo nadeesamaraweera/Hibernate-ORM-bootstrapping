@@ -20,8 +20,8 @@ public class Customer {
     @Column(name = "Customer_address")
     private  String address;
 
-    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>();
+     @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY , mappedBy = "customer")
+     private List<Order> orders = new ArrayList<>();
 
 
     public Customer() {
@@ -29,6 +29,15 @@ public class Customer {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 
     public void setId(int id) {
