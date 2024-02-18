@@ -5,6 +5,7 @@ import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.boot.jaxb.SourceType;
+import repository.CustomerRepository;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -15,15 +16,18 @@ public class AppInitializer {
 
         //1.save
         System.out.println("----------SAVE-----------");
-        Session session = SessionFactoryConfig
-                .getInstance()
-                .getSession();
+//        Session session = SessionFactoryConfig
+//                .getInstance()
+//                .getSession();
+//
+//        Transaction transaction = session.beginTransaction();
+//        Customer customer = getCustomer();
+//        session.save(customer);
+//        transaction.commit();
+//        session.close();
 
-        Transaction transaction = session.beginTransaction();
-        Customer customer = getCustomer();
-        session.save(customer);
-        transaction.commit();
-        session.close();
+        CustomerRepository customerRepository =new CustomerRepository();
+        customerRepository.saveCustomer(getCustomer());
 
 
 //        //2.get
