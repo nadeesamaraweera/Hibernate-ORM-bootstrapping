@@ -1,7 +1,7 @@
 package repository;
 
 import config.SessionFactoryConfig;
-import entity.CustomerOld;
+import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,7 +14,7 @@ public class CustomerRepository {
                 .getSession();
     }
 
-    public  int saveCustomer(CustomerOld customer) {
+    public  int saveCustomer(Customer customer) {
         Transaction transaction = session.beginTransaction();
         try {
             int customerId = (int) session.save(customer);
@@ -29,9 +29,9 @@ public class CustomerRepository {
         }
     }
 
-    public CustomerOld getCustomer(int id) throws  RuntimeException{
+    public Customer getCustomer(int id) throws  RuntimeException{
         try{
-           CustomerOld customer = session.get(CustomerOld.class,id);
+           Customer customer = session.get(Customer.class,id);
            session.close();
            return  customer;
         }catch (Exception e){
@@ -41,7 +41,7 @@ public class CustomerRepository {
         }
     }
 
-    public  boolean updateCustomer(CustomerOld customer){
+    public  boolean updateCustomer(Customer customer){
         Transaction transaction =session.beginTransaction();
         try {
             session.update(customer);
@@ -57,7 +57,7 @@ public class CustomerRepository {
         }
     }
 
-    public  boolean deleteCustomer(CustomerOld customer){
+    public  boolean deleteCustomer(Customer customer){
         Transaction transaction =session.beginTransaction();
         try {
             session.delete(customer);

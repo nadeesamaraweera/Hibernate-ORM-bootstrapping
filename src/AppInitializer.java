@@ -1,6 +1,6 @@
 import embedded.MobileNumber;
 import embedded.Nameidentifire;
-import entity.CustomerOld;
+import entity.Customer;
 import repository.CustomerRepository;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class AppInitializer {
 //        getSession.close();
 
         customerRepository = new CustomerRepository();
-        CustomerOld customer = customerRepository.getCustomer(1);
+        Customer customer = customerRepository.getCustomer(1);
         System.out.println(customer);
 //
 //
@@ -47,9 +47,9 @@ public class AppInitializer {
 //        updateTransaction.commit();
 //        updateSession.close();
 
-         customerRepository = new CustomerRepository();
-         customer.setAddress("Galle");
-         customerRepository.updateCustomer(customer);
+//         customerRepository = new CustomerRepository();
+//         customer.setAddress("Galle");
+//         customerRepository.updateCustomer(customer);
 
 //
 //
@@ -63,42 +63,44 @@ public class AppInitializer {
 //        deleteSession.close();
 //        }
 
-          customerRepository = new CustomerRepository();
-          customerRepository.deleteCustomer(customer);
+//          customerRepository = new CustomerRepository();
+//          customerRepository.deleteCustomer(customer);
 
 
     }
-          private static CustomerOld getCustomer() {
-          CustomerOld customer = new CustomerOld();
-          customer.setId(1);
-          Nameidentifire nameidentifire =  getNameIdentifire();
-              MobileNumber homeNo =new MobileNumber();
-              homeNo.setType("Home");
-              homeNo.setMobileNo("0412229821");
+          private static Customer getCustomer() {
+          Customer customer = new Customer();
+              customer.setId(1);
+              customer.setName("nadeesha");
+              customer.setAddress("Matara");
+//          Nameidentifire nameidentifire =  getNameIdentifire();
+//              MobileNumber homeNo =new MobileNumber();
+//              homeNo.setType("Home");
+//              homeNo.setMobileNo("0412229821");
+//
+//              MobileNumber mobileNo = new MobileNumber();
+//              mobileNo.setType("Mobile");
+//              mobileNo.setMobileNo("0716490250");
 
-              MobileNumber mobileNo = new MobileNumber();
-              mobileNo.setType("Mobile");
-              mobileNo.setMobileNo("0716490250");
-
-              List<MobileNumber> mobileNumbers = new ArrayList<>();
-              mobileNumbers.add(homeNo);
-              mobileNumbers.add(mobileNo);
-              customer.setMobileNumbers(mobileNumbers);
+//              List<MobileNumber> mobileNumbers = new ArrayList<>();
+//              mobileNumbers.add(homeNo);
+//              mobileNumbers.add(mobileNo);
+//              customer.setMobileNumbers(mobileNumbers);
 
 //          nameidentifire.setFirstName("Saman");
 //          nameidentifire.setMiddleName("De");
 //          nameidentifire.setLastName("Silva");
-           customer.setName(nameidentifire);
-          customer.setAddress("Matara");
-          customer.setSalary(50000);
-          return customer;
+//           customer.setName(nameidentifire);
+
+//          customer.setSalary(50000);
+         return customer;
     }
 
-         private static Nameidentifire getNameIdentifire(){
-             Nameidentifire nameidentifire = new Nameidentifire();
-             nameidentifire.setFirstName("Saman");
-             nameidentifire.setMiddleName("De");
-             nameidentifire.setLastName("Silva");
-             return nameidentifire;
-         }
+//         private static Nameidentifire getNameIdentifire(){
+//             Nameidentifire nameidentifire = new Nameidentifire();
+//             nameidentifire.setName("Saman");
+//             nameidentifire.setMiddleName("De");
+//             nameidentifire.setLastName("Silva");
+//             return nameidentifire;
+//         }
 }
