@@ -1,13 +1,8 @@
-import config.SessionFactoryConfig;
 import embedded.MobileNumber;
 import embedded.Nameidentifire;
-import entity.Customer;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.boot.jaxb.SourceType;
+import entity.CustomerOld;
 import repository.CustomerRepository;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +33,7 @@ public class AppInitializer {
 //        getSession.close();
 
         customerRepository = new CustomerRepository();
-        Customer customer = customerRepository.getCustomer(1);
+        CustomerOld customer = customerRepository.getCustomer(1);
         System.out.println(customer);
 //
 //
@@ -55,6 +50,7 @@ public class AppInitializer {
          customerRepository = new CustomerRepository();
          customer.setAddress("Galle");
          customerRepository.updateCustomer(customer);
+
 //
 //
 //        //4.delete
@@ -72,8 +68,8 @@ public class AppInitializer {
 
 
     }
-          private static Customer getCustomer() {
-          Customer customer = new Customer();
+          private static CustomerOld getCustomer() {
+          CustomerOld customer = new CustomerOld();
           customer.setId(1);
           Nameidentifire nameidentifire =  getNameIdentifire();
               MobileNumber homeNo =new MobileNumber();
