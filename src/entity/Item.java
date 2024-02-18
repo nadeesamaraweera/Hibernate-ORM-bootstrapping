@@ -1,6 +1,8 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -20,6 +22,10 @@ public class Item {
 
     @Column(name = "unit_price")
     private double unitPrice;
+
+
+    @ManyToMany(mappedBy = "items")
+    private List<Order> orders = new ArrayList<>();
 
     public int getId() {
         return id;

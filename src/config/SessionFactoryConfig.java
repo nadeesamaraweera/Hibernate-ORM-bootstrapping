@@ -1,6 +1,7 @@
 package config;
 
 import entity.Customer;
+import entity.Item;
 import entity.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -41,6 +42,8 @@ public class SessionFactoryConfig {
                 .configure()
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Order.class)
+                .addAnnotatedClass(Item.class)
+
                 .buildSessionFactory();
 
     }

@@ -20,7 +20,7 @@ public class Customer {
     @Column(name = "Customer_address")
     private  String address;
 
-     @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY , mappedBy = "customer")
+     @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER , mappedBy = "customer")
      private List<Order> orders = new ArrayList<>();
 
 
@@ -37,6 +37,7 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 
