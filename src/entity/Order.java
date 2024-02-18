@@ -1,6 +1,7 @@
 package entity;
 
 import jdk.jfr.Timespan;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 
@@ -17,9 +18,14 @@ public class Order {
     @Column(name = "order_description")
     private String description;
 
-    @Timespan
+    @CreationTimestamp
     @Column(name = "order_date_time")
     private String orderDateTime;
+
+
+    @ManyToOne
+    @JoinColumn(name =  "customer_id")
+    private  Customer customer;
 
     @Override
     public String toString() {
@@ -48,6 +54,12 @@ public class Order {
 
     public String getOrderDateTime() {
         return orderDateTime;
+    }
+
+    public Order(String orderId, String description, String orderDateTime) {
+        this.orderId = orderId;
+        this.description = description;
+        this.orderDateTime = orderDateTime;
     }
 
     public void setOrderDateTime(String orderDateTime) {

@@ -1,6 +1,8 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -11,6 +13,16 @@ public class Customer {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "customer_id")
    private  int id;
+
+    @Column(name = "Customer_name")
+    private  String name;
+
+    @Column(name = "Customer_address")
+    private  String address;
+
+    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private List<Order> orders = new ArrayList<>();
+
 
     public Customer() {
     }
@@ -39,11 +51,7 @@ public class Customer {
         this.address = address;
     }
 
-    @Column(name = "Customer_name")
-    private  String name;
 
-    @Column(name = "Customer_address")
-    private  String address;
 
 
 }
