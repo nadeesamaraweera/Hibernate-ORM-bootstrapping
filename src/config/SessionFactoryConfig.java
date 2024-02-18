@@ -7,6 +7,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryConfig {
 
@@ -15,20 +16,35 @@ public class SessionFactoryConfig {
     private  final SessionFactory sessionFactory;
 
     private SessionFactoryConfig() {
-        //1.create a Service Registry
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .configure()
-                .build();
+//        //1.create a Service Registry
+//        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+//                .configure()
+//                .build();
 
         // 2.create a MetaData object
-        Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(Customer.class)
-                .getMetadataBuilder()
-                .build();
+//        Metadata metadata = new MetadataSources( new StandardServiceRegistryBuilder()
+//                .configure()
+//                .build())
+//                .addAnnotatedClass(Customer.class)
+//                .getMetadataBuilder()
+//                .build();
+//
 
         // 3.Create a Session Factory
-        sessionFactory = metadata
+//        sessionFactory = new MetadataSources(
+//                new StandardServiceRegistryBuilder()
+//                .configure()
+//                .build())
+//                .addAnnotatedClass(Customer.class)
+//                .getMetadataBuilder()
+//                .build()
+//                .buildSessionFactory();
+
+        sessionFactory =new Configuration()
+                .configure()
+                .addAnnotatedClass(Customer.class)
                 .buildSessionFactory();
+
     }
 
     public static SessionFactoryConfig getInstance() {
