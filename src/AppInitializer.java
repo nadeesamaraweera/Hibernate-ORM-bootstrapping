@@ -51,6 +51,10 @@ public class AppInitializer {
 //        updateSession.update(existCus);
 //        updateTransaction.commit();
 //        updateSession.close();
+
+         customerRepository = new CustomerRepository();
+         customer.setAddress("Galle");
+         customerRepository.updateCustomer(customer);
 //
 //
 //        //4.delete
