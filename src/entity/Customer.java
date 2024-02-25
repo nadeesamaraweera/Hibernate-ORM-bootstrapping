@@ -4,41 +4,41 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
 @Table(name = "customer")
 public class Customer {
 
-    @Id //  Tells Hibernate that this is the primary key  of table
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "customer_id")
-   private  int id;
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
+    private int id;
+    @Column(name = "customer_name")
+    private String name;
+    @Column(name = "customer_address")
+    private String address;
 
-    @Column(name = "Customer_name")
-    private  String name;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "customer")
+    private List<Order> orders = new ArrayList<>();
 
-    @Column(name = "Customer_address")
-    private  String address;
+    public List<Order> getOrders() {
+        return orders;
+    }
 
-     @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER , mappedBy = "customer")
-     private List<Order> orders = new ArrayList<>();
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
+    public Customer() {}
 
-    public Customer() {
+    public Customer(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
     }
 
     public int getId() {
         return id;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", orders=" + orders +
-                '}';
     }
 
     public void setId(int id) {
@@ -61,7 +61,13 @@ public class Customer {
         this.address = address;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", orders=" + orders +
+                '}';
+    }
 }
