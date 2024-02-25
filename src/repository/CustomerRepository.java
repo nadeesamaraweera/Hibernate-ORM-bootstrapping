@@ -107,6 +107,8 @@ public class CustomerRepository {
 
         Query query =session.createQuery(sql);
         query.setParameter("cus_id" , cusId);
-
+        List list =query.list();
+        session.close();
+        return list;
     }
 }
