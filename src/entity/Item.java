@@ -30,6 +30,10 @@ public class Item {
     @OneToMany(cascade = CascadeType.ALL , fetch =  FetchType.LAZY , mappedBy = "item")
     private  List<OrderDetail> orderDetails = new ArrayList<>();
 
+    public Item() {
+
+    }
+
     public int getId() {
         return id;
     }
